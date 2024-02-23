@@ -21,17 +21,41 @@ class App extends StatelessWidget {
       근데 속성도 위젯인 경우가 있다. 그래서 해당 위젯의 생성자를 보며 속성을 찾고 정의해 나가자,,
      */
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Hello flutter'),
-          backgroundColor: Colors.red,
-          ),
-        body: Center(
-          child:Text('Hello world!'),
+        backgroundColor:Color(0xFF181818),
+        body: Padding( // Padding 으로 감싼 위젯에 패딩주기 위함
+          padding: EdgeInsets.symmetric(horizontal: 40), // Padding 클래스의 필수 프로퍼티
+          child: Column( // 수직구조일 경우 Column
+          children: [
+            SizedBox(
+              height: 80,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end, // 정렬
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children:[
+                    Text('Hey, Selena',
+                      style: TextStyle(
+                        color:Colors.white,
+                        fontSize: 28,
+                        fontWeight: FontWeight.w800, // 두께
+                        )
+                      ),
+                    Text('Welcome back',
+                      style: TextStyle(
+                        color:Colors.white.withOpacity(0.8),
+                        fontSize: 18,
+                        )
+                      ),
+                  ],
+                )
+              ],
+            )
+          ],
         ),
+        )
       ),
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
-      )
     );
   }
 
