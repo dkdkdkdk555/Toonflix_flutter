@@ -18,7 +18,7 @@ class App extends StatelessWidget {
     // root 위젯은 이 둘중 하나를 리턴해야한다. -> 앱이 어떻게 보이도록 하는지 결정
     return MaterialApp(/**
       해당 위젯의 속성을 정의해줘야 한다.
-      근데 속성도 위젯인 경우가 있다. 그래서 해당 위젯의 생성자를 보며 속성을 찾고 정의해 나가자.
+      근데 속성도 위젯인 경우가 있다. 그래서 해당 위젯의 생성자를 보며 속성을 찾고 정의해 나가자,,
      */
       home: Scaffold(
         appBar: AppBar(
