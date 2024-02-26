@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:toonflix/widgets/button.dart';
 
 void main() {
-  runApp(App()); // 앱 시작점, 여기에 넣고 실행하는 위젯은 root 위젯이다.
+  runApp(const App()); // 앱 시작점, 여기에 넣고 실행하는 위젯은 root 위젯이다.
   /**
    * 플러터는 widget 을 레고블럭으로 보고 그 블럭을 합쳐서 결과물을 만드는 것 과 같다!
    * 
@@ -11,6 +13,8 @@ void main() {
 
 // flutter 의 모든 클래스들은 3가지 핵심 위젯 중 하나를 상속받아야한다.
 class App extends StatelessWidget {
+  const App({super.key});
+
   
   @override 
   Widget build(BuildContext context) {
@@ -21,35 +25,61 @@ class App extends StatelessWidget {
       근데 속성도 위젯인 경우가 있다. 그래서 해당 위젯의 생성자를 보며 속성을 찾고 정의해 나가자,,
      */
       home: Scaffold(
-        backgroundColor:Color(0xFF181818),
+        backgroundColor:const Color(0xFF181818),
         body: Padding( // Padding 으로 감싼 위젯에 패딩주기 위함
-          padding: EdgeInsets.symmetric(horizontal: 40), // Padding 클래스의 필수 프로퍼티
+          padding: const EdgeInsets.symmetric(horizontal: 40), // Padding 클래스의 필수 프로퍼티
           child: Column( // 수직구조일 경우 Column
-          children: [
-            SizedBox(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
               height: 80,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end, // 정렬
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end, // 정렬
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children:[
+                      const Text('Hey, Selena',
+                        style: TextStyle(
+                          color:Colors.white,
+                          fontSize: 28,
+                          fontWeight: FontWeight.w800, // 두께
+                          )
+                        ),
+                      Text('Welcome back',
+                        style: TextStyle(
+                          color:Colors.white.withOpacity(0.8),
+                          fontSize: 18,
+                          )
+                        ),
+                    ],
+                  )
+                ],
+            ),
+            const SizedBox(
+              height: 120,
+            ),
+            Text(
+              'Total Balance',
+              style: TextStyle(color: Colors.white.withOpacity(0.8)),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Text(
+              '\$5 194 482',
+              style: TextStyle(
+                fontSize: 44,
+                fontWeight: FontWeight.w600,
+                color: Colors.white.withOpacity(0.8)),
+            ),
+            const SizedBox(height:30),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children:[
-                    Text('Hey, Selena',
-                      style: TextStyle(
-                        color:Colors.white,
-                        fontSize: 28,
-                        fontWeight: FontWeight.w800, // 두께
-                        )
-                      ),
-                    Text('Welcome back',
-                      style: TextStyle(
-                        color:Colors.white.withOpacity(0.8),
-                        fontSize: 18,
-                        )
-                      ),
-                  ],
-                )
+                MyButton(), // 
+                Button(text: "Request", bgColor: Color(0xFF1F2123), textColor: Colors.white),
               ],
             )
           ],
@@ -59,6 +89,34 @@ class App extends StatelessWidget {
     );
   }
 
+}
+
+class MyButton extends StatelessWidget {
+  const MyButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color:Colors.amber,
+        borderRadius: BorderRadius.circular(45),
+      ),
+      child:const Padding(padding: 
+        EdgeInsets.symmetric(
+          vertical: 20,
+          horizontal: 50,
+      ),
+      child: Text(
+        'Transfer',
+        style: TextStyle(
+          fontSize: 22,
+        ),
+        ),
+      )
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
