@@ -14,8 +14,8 @@ class Button extends StatelessWidget{
                     color:bgColor,
                     borderRadius: BorderRadius.circular(45),
                   ),
-                  child:const Padding(padding: 
-                    EdgeInsets.symmetric(
+                  child: Padding(padding: 
+                    const EdgeInsets.symmetric(
                       vertical: 20,
                       horizontal: 50,
                   ),
@@ -23,7 +23,7 @@ class Button extends StatelessWidget{
                     text,
                     style: TextStyle(
                       fontSize: 22,
-                      color: Colors.white,
+                      color: textColor,
                     ),
                     ),
                   )

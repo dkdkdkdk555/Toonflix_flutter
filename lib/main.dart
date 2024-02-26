@@ -76,19 +76,87 @@ class App extends StatelessWidget {
             ),
             const SizedBox(height:30),
             const Row(
+
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 MyButton(), // 
                 Button(text: "Request", bgColor: Color(0xFF1F2123), textColor: Colors.white),
               ],
-            )
+            ),
+          const SizedBox(
+            height:100,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+             const Text('Wallets',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 36,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            Text('View All',
+              style:TextStyle(
+                color:Colors.white.withOpacity(0.8),
+                fontSize: 18,
+              ),
+            ),
+          ],),
+          const SizedBox(height:20,),
+          Container(
+            clipBehavior: Clip.hardEdge, // 오버플로우 되는거 가리기
+            decoration: BoxDecoration(
+              color: const Color(0xFF1F2123),
+              borderRadius: BorderRadius.circular(20)
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('Euro',
+                      style: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.w600),),
+                      const SizedBox(height:10,),
+                      Row(
+                        children: [
+                          const Text('6428',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize:  20,
+                          )),
+                          const SizedBox(width:10),
+                          Text('EUR', 
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.8),
+                            fontSize: 20
+                          )),
+                      ]
+                    ),]
+                  ),
+                  Transform.scale( // 해당 위젯이 커지면 이걸 감싸고 있는 위젯 자체가 커지는 걸 막기 위한 설정 또는 위젯
+                    scale: 2.2,
+                    child: Transform.translate(
+                      offset: const Offset(8, 12),
+                      child: const Icon(Icons.euro_rounded,
+                      color: Colors.white,
+                      size:88
+                      ),
+                    ),
+                  )
+              ],),
+            ),
+          ),
           ],
         ),
         )
       ),
     );
   }
-
 }
 
 class MyButton extends StatelessWidget {
