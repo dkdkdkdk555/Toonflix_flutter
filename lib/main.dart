@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:toonflix/widgets/button.dart';
+import 'package:toonflix/widgets/currency_card.dart';
 
 void main() {
   runApp(const App()); // 앱 시작점, 여기에 넣고 실행하는 위젯은 root 위젯이다.
@@ -26,133 +28,96 @@ class App extends StatelessWidget {
      */
       home: Scaffold(
         backgroundColor:const Color(0xFF181818),
-        body: Padding( // Padding 으로 감싼 위젯에 패딩주기 위함
-          padding: const EdgeInsets.symmetric(horizontal: 40), // Padding 클래스의 필수 프로퍼티
-          child: Column( // 수직구조일 경우 Column
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-              height: 80,
-            ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end, // 정렬
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children:[
-                      const Text('Hey, Selena',
-                        style: TextStyle(
-                          color:Colors.white,
-                          fontSize: 28,
-                          fontWeight: FontWeight.w800, // 두께
-                          )
-                        ),
-                      Text('Welcome back',
-                        style: TextStyle(
-                          color:Colors.white.withOpacity(0.8),
-                          fontSize: 18,
-                          )
-                        ),
-                    ],
-                  )
-                ],
-            ),
-            const SizedBox(
-              height: 120,
-            ),
-            Text(
-              'Total Balance',
-              style: TextStyle(color: Colors.white.withOpacity(0.8)),
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            Text(
-              '\$5 194 482',
-              style: TextStyle(
-                fontSize: 44,
-                fontWeight: FontWeight.w600,
-                color: Colors.white.withOpacity(0.8)),
-            ),
-            const SizedBox(height:30),
-            const Row(
-
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        body: SingleChildScrollView( // 스크롤뷰
+          child: Padding( // Padding 으로 감싼 위젯에 패딩주기 위함
+            padding: const EdgeInsets.symmetric(horizontal: 40), // Padding 클래스의 필수 프로퍼티
+            child: Column( // 수직구조일 경우 Column
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MyButton(), // 
-                Button(text: "Request", bgColor: Color(0xFF1F2123), textColor: Colors.white),
-              ],
-            ),
-          const SizedBox(
-            height:100,
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-             const Text('Wallets',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 36,
-                fontWeight: FontWeight.w600,
+                const SizedBox(
+                height: 80,
               ),
-            ),
-            Text('View All',
-              style:TextStyle(
-                color:Colors.white.withOpacity(0.8),
-                fontSize: 18,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end, // 정렬
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children:[
+                        const Text('Hey, Selena',
+                          style: TextStyle(
+                            color:Colors.white,
+                            fontSize: 28,
+                            fontWeight: FontWeight.w800, // 두께
+                            )
+                          ),
+                        Text('Welcome back',
+                          style: TextStyle(
+                            color:Colors.white.withOpacity(0.8),
+                            fontSize: 18,
+                            )
+                          ),
+                      ],
+                    )
+                  ],
               ),
-            ),
-          ],),
-          const SizedBox(height:20,),
-          Container(
-            clipBehavior: Clip.hardEdge, // 오버플로우 되는거 가리기
-            decoration: BoxDecoration(
-              color: const Color(0xFF1F2123),
-              borderRadius: BorderRadius.circular(20)
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(30),
-              child: Row(
+              const SizedBox(
+                height: 120,
+              ),
+              Text(
+                'Total Balance',
+                style: TextStyle(color: Colors.white.withOpacity(0.8)),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Text(
+                '\$5 194 482',
+                style: TextStyle(
+                  fontSize: 44,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white.withOpacity(0.8)),
+              ),
+              const SizedBox(height:30),
+              const Row(
+          
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text('Euro',
-                      style: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.w600),),
-                      const SizedBox(height:10,),
-                      Row(
-                        children: [
-                          const Text('6428',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize:  20,
-                          )),
-                          const SizedBox(width:10),
-                          Text('EUR', 
-                          style: TextStyle(
-                            color: Colors.white.withOpacity(0.8),
-                            fontSize: 20
-                          )),
-                      ]
-                    ),]
-                  ),
-                  Transform.scale( // 해당 위젯이 커지면 이걸 감싸고 있는 위젯 자체가 커지는 걸 막기 위한 설정 또는 위젯
-                    scale: 2.2,
-                    child: Transform.translate(
-                      offset: const Offset(8, 12),
-                      child: const Icon(Icons.euro_rounded,
-                      color: Colors.white,
-                      size:88
-                      ),
-                    ),
-                  )
-              ],),
+                  MyButton(), // 
+                  Button(text: "Request", bgColor: Color(0xFF1F2123), textColor: Colors.white),
+                ],
+              ),
+            const SizedBox(
+              height:100,
             ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+               const Text('Wallets',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 36,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Text('View All',
+                style:TextStyle(
+                  color:Colors.white.withOpacity(0.8),
+                  fontSize: 18,
+                ),
+              ),
+            ],),
+            const SizedBox(height:20,),
+            const CurrencyCard(name: "EURO", code: "EUR", amount: "6 482", icon: Icons.euro_rounded, isInverted: false,),
+            Transform.translate(
+              offset: const Offset(0, -20),
+              child: const CurrencyCard(name: "Bitcoin", code: "BTC", amount: "9 785", icon: Icons.currency_bitcoin_rounded, isInverted: true,)),
+            Transform.translate(
+              offset: const Offset(0, -40),
+              child: const CurrencyCard(name: "Dollar", code: "USD", amount: "428", icon: Icons.money_outlined, isInverted: false,)),
+            ],
           ),
-          ],
-        ),
+          ),
         )
       ),
     );
