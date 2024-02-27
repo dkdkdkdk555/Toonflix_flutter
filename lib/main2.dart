@@ -21,37 +21,45 @@ class Apsp extends StatefulWidget {
 // UI를 구축하는 곳, 새로 고침시 최신 데이터를 보여줌
 class _AppState extends State<Apsp> {
   
-  List<int> numbers = [];
-
-  void onClicked(){
-    setState(() {  // UI에게 데이터가 바뀌었다고 알리는 함수
-      numbers.add(numbers.length);
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
+      theme: ThemeData(
+        textTheme: const TextTheme(
+          titleLarge: TextStyle(
+            color: Colors.red,
+          ),
+        ),
+      ),
+      home: const Scaffold(
         backgroundColor: Colors.white,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Click Count',
-                style: TextStyle(fontSize: 30),
-              ),
-              for(var n in numbers) Text('$n'),
-              IconButton(
-                iconSize: 30,
-                onPressed: onClicked, 
-                icon: const Icon(Icons.add_box_rounded)
-                ),
+              MyLargeTitle(),
+          
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class MyLargeTitle extends StatelessWidget {
+  const MyLargeTitle({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) { 
+  // BuildContext context 는 상위요소의 모든 정보를 가지고 있다. 
+  //'위젯 트리' 에 대한 정보가 담겨있다. -> 이걸 통해 부모요소에 접근
+    return Text(
+      'My Large Title',
+      style: TextStyle(fontSize: 30, color:Theme.of(context).textTheme.titleLarge!.color,), // ! 는 NotNull 임을 명확히 해주는것이다. ( ? = Nullable)
     );
   }
 }
