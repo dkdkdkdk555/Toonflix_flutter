@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:toonflix/widgets/button.dart';
 import 'package:toonflix/widgets/currency_card.dart';
+//
+import 'package:toonflix/main2.dart';
 
 void main() {
-  runApp(const App()); // 앱 시작점, 여기에 넣고 실행하는 위젯은 root 위젯이다.
+  runApp(const Apsp()); // 앱 시작점, 여기에 넣고 실행하는 위젯은 root 위젯이다.
   /**
    * 플러터는 widget 을 레고블럭으로 보고 그 블럭을 합쳐서 결과물을 만드는 것 과 같다!
    * 
@@ -17,7 +19,6 @@ void main() {
 class App extends StatelessWidget {
   const App({super.key});
 
-  
   @override 
   Widget build(BuildContext context) {
     // material, cupertino 는 각각 구글과 애플의 디자인 시스템이다. 
